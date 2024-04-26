@@ -43,17 +43,22 @@ A API possui as seguintes rotas:
 
 ### Rota de Criação de Usuário (POST)
 Descrição: Cria um novo usuário no sistema. A senha deve ter pelo menos 6 caracteres e conter números e letras.
+
 URL: /api/users 
+
 Método: POST
-```
+
 Corpo da Requisição:
+```
 json
 {
     "username" :"string",
     "email":"string",
     "password":"string",
 }
+```
 
+```
 Exemplo de Dados:
 json
 {
@@ -76,7 +81,9 @@ json
     "username" :"string",
     "password":"string",
 }
+```
 
+```
 Exemplo de Dados:
 json
 {
@@ -84,6 +91,7 @@ json
     "password":"abc123456"
 }
 ```
+
 ---
 ### Rotas Protegidas
 Exemplo de rota protegida que requer autenticação com JWT.
@@ -97,7 +105,9 @@ Descrição: Cria um novo filme no sistema.
 URL: /movies
 Método: POST
 Parâmetros de Rota:
+
 ```id:"string"```
+
 Corpo da Requisição:
 ```
 json
@@ -113,12 +123,27 @@ json
     "contentType": "string"
   }
   ```
+```
+Exemplo de novo filme:
+{
+    "title": "Filme de Exemplo",
+    "director": "Diretor Exemplo",
+    "description": "Descrição do Filme",
+    "first_aired": "2022-01-01",
+    "genres": ["Ação", "Aventura"],
+    "original_title": "Original Title",
+    "overview": "Visão geral do filme",
+    "poster_path": "/caminho/do/poster.jpg",
+    "contentType": "Movie"
+}
+```
 ---
 ### Atualizar Filme (PATCH)
 Descrição: Atualiza os detalhes de um filme existente.
 URL: /movies/:id
 Método: PATCH
 Parâmetros de Rota:
+
 ```id:"string"```
 
 Exemplo de Dados:
@@ -134,21 +159,24 @@ json
     "overview": "string",
     "poster_path": "string",
     "contentType": "string"
-  }
-  Exemplo do 
-  {
-     "title": "Filme de Exemplo",
-     "director": "Diretor Exemplo",
-     "description": "Descrição do Filme",
-     "first_aired": "2022-01-01",
-      "genres": ["Ação", "Aventura"],
-     "original_title": "Original Title",
-     "overview": "Visão geral do filme",
-     "poster_path": "/caminho/do/poster.jpg",
-     "contentType": "Movie"
 }
+```
 
 ```
+  Exemplo de edição: 
+{
+    "title": "Filme de Exemplo",
+    "director": "Diretor Exemplo",
+    "description": "Descrição do Filme",
+    "first_aired": "2022-01-01",
+    "genres": ["Ação", "Aventura"],
+    "original_title": "Original Title",
+    "overview": "Visão geral do filme",
+    "poster_path": "/caminho/do/poster.jpg",
+    "contentType": "Movie",
+}
+```
+
 ---
 
 Excluir Filme (DELETE)
@@ -156,9 +184,11 @@ Descrição: Exclui um filme do sistema.
 URL: /movies/:id
 Método: DELETE
 Parâmetros de Rota:
+
 ```
  id:"string"
 ```
+
 ---
 ## Fique à vontade para explorar e testar as rotas usando o Swagger.
 ---
