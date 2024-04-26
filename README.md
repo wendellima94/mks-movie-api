@@ -166,9 +166,11 @@ json
     "original_title": "Original Title",
     "overview": "Visão geral do filme",
     "poster_path": "/caminho/do/poster.jpg",
-    "contentType": "Movie"
+    "contentType": "Movie",
 }
+
 ```
+
 ---
 
 Excluir Filme (DELETE)
