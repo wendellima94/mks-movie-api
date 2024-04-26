@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  app:
+    container_name: "mks-api-movie"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '3000:3000'
+    depends_on:
+      - db
+      - redis
+    environment:
+      NODE_ENV: production
+    env_file:
+      - .env 
+    networks:
+      - mynetwork
+    volumes:
+      - .:/app
+      - /app/node_modules
+
+  db:
+    image: postgres
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: movielist
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 100295
+
+  redis:
+    image: redis
+    ports:
+      - '6379:6379'
+
+networks:
+  mynetwork:
