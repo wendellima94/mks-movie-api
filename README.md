@@ -43,10 +43,13 @@ A API possui as seguintes rotas:
 
 ### Rota de Criação de Usuário (POST)
 Descrição: Cria um novo usuário no sistema. A senha deve ter pelo menos 6 caracteres e conter números e letras.
+
 URL: /api/users 
+
 Método: POST
-```
+
 Corpo da Requisição:
+```
 json
 {
     "username" :"string",
