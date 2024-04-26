@@ -10,12 +10,6 @@
       { "handle": "filesystem" },
       { "src": "/.*", "dest": "/main.js" }
     ],
-    "install": {
-      "include": ["package.json"],
-      "ignoreScripts": false,
-      "dest": "/vercel/functions",
-      "cmd": "npm install --force"
-    },
     "functions": {
       "app": {
         "runtime": "@vercel/node"
