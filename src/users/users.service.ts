@@ -31,7 +31,7 @@ export class UsersService {
     const { username, email, password } = createUserDto;
 
     if (!isValidPassword(password)) {
-      throw new BadRequestException('A senha deve ter pelo menos 8 caracteres e conter números e letras.');
+      throw new BadRequestException('A senha deve ter pelo menos 6 caracteres e conter números e letras.');
     }
 
     const user = new User();

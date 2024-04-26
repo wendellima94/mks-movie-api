@@ -19,6 +19,7 @@ export class MovieService {
 
   @Get()
   async getAllMovies(): Promise<Movie[]> {
+    
     const cachedMovies =
       await this.redisCacheRepository.getData<Movie[]>('allMovies');
     if (cachedMovies) {

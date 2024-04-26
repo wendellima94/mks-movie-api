@@ -1,73 +1,164 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Teste Back-end Junior para MKS Desenvolvimento de Sistemas
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Descrição breve do projeto:
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Instalação
 
-## Description
+Certifique-se de ter o Node.js e o npm instalados em sua máquina.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
-
-## Installation
+1.  Clone este repositório.
+2.  Instale as dependências usando o comando:
 
 ```bash
-$ npm install
+npm install
+```
+Configuração
+
+Antes de iniciar o servidor, é necessário configurar algumas variáveis de ambiente.
+
+Crie um arquivo .env na raiz do projeto e adicione as seguintes variáveis:
+
+```dotenv
+PORT=3000
+JWT_SECRET=seu_token_secreto
+DB_HOST=seu_host_do_banco_de_dados
+DB_PORT=porta_do_banco_de_dados
+DB_USERNAME=seu_usuario_do_banco_de_dados
+DB_PASSWORD=sua_senha_do_banco_de_dados
+```
+---
+Executando o Servidor
+Para iniciar o servidor localmente, execute o seguinte comando:
+```
+bash
+npm run start:dev
+```
+---
+#### O servidor estará acessível em http://localhost:3000.
+## "/" Rota do Swagger
+---
+
+#### Rotas da API
+A API possui as seguintes rotas:
+
+### Rota de Criação de Usuário (POST)
+Descrição: Cria um novo usuário no sistema. A senha deve ter pelo menos 6 caracteres e conter números e letras.
+URL: /api/users 
+Método: POST
+```
+Corpo da Requisição:
+json
+{
+    "username" :"string",
+    "email":"string",
+    "password":"string",
+}
+
+Exemplo de Dados:
+json
+{
+    "username": Wendel",
+    "email""wendel@aaa.com",
+    "password":"abc123456"
+}
 ```
 
-## Running the app
+----
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+### Rota de Login (POST)
+Descrição: Autentica um usuário e gera um token JWT.
+URL: /api/auth/login
+Método: POST
 ```
+Corpo da Requisição:
+json
+{
+    "username" :"string",
+    "password":"string",
+}
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+Exemplo de Dados:
+json
+{
+    "username": Wendel",
+    "password":"abc123456"
+}
 ```
+---
+### Rotas Protegidas
+Exemplo de rota protegida que requer autenticação com JWT.
+Header da Requisição:
 
-## Support
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Authorization: Bearer <Seu_Token_JWT>
 
-## Stay in touch
+Criar Filme (POST)
+Descrição: Cria um novo filme no sistema.
+URL: /movies
+Método: POST
+Parâmetros de Rota:
+```id:"string"```
+Corpo da Requisição:
+```
+json
+{
+    "title": "string",
+    "director": "string",
+    "description": "string",
+    "first_aired": "string",
+    "genres": ["string"],
+    "original_title": "string",
+    "overview": "string",
+    "poster_path": "string",
+    "contentType": "string"
+  }
+  ```
+---
+### Atualizar Filme (PATCH)
+Descrição: Atualiza os detalhes de um filme existente.
+URL: /movies/:id
+Método: PATCH
+Parâmetros de Rota:
+```id:"string"```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+Exemplo de Dados:
+```
+json
+{
+    "title": "string",
+    "director": "string",
+    "description": "string",
+    "first_aired": "string",
+    "genres": ["string"],
+    "original_title": "string",
+    "overview": "string",
+    "poster_path": "string",
+    "contentType": "string"
+  }
+  Exemplo do 
+  {
+     "title": "Filme de Exemplo",
+     "director": "Diretor Exemplo",
+     "description": "Descrição do Filme",
+     "first_aired": "2022-01-01",
+      "genres": ["Ação", "Aventura"],
+     "original_title": "Original Title",
+     "overview": "Visão geral do filme",
+     "poster_path": "/caminho/do/poster.jpg",
+     "contentType": "Movie"
+}
 
-## License
+```
+---
 
-Nest is [MIT licensed](LICENSE).
+Excluir Filme (DELETE)
+Descrição: Exclui um filme do sistema.
+URL: /movies/:id
+Método: DELETE
+Parâmetros de Rota:
+```
+ id:"string"
+```
+---
+## Fique à vontade para explorar e testar as rotas usando o Swagger.
+---
