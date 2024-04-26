@@ -1,16 +1,12 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { SwaggerModule, DocumentBuilder, ApiProperty } from '@nestjs/swagger';
 import { config } from 'dotenv';
-import serverless from 'serverless-http';
 
 config();
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
-  const globalPrefix = '.netlify/functions/main';
-  app.setGlobalPrefix(globalPrefix);
 
   const config = new DocumentBuilder()
     .setTitle('Movie Catalog API')
@@ -23,23 +19,18 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document, {
+  SwaggerModule.setup('/', app, document, {
     swaggerOptions: {
       persistAuthorization: true,
     },
     customSiteTitle: 'Movie Catalog API Documentation',
     customCss: '.swagger-ui .topbar { background-color: #1976d2; }',
   });
+  
+  const port = process.env.PORT || 3000;
+  await app.listen(port);
+  console.log(`Nest application is running on port ${port}`);
 
-  const expressApp = app.getHttpAdapter().getInstance();
-  await app.listen(3000);
-
-  console.log('Nest application is running');
   console.log('Connected to database');
 }
-
-let server;
-export const handler = async (event, context, callback) => {
-  server = server ?? (await bootstrap());
-  return serverless(server)(event, context);
-};
+bootstrap();

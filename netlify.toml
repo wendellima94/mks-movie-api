@@ -3,7 +3,8 @@
   publish = "dist"
   functions = "dist/netlify/functions"
 
-[[redirects]]
+  [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/main"
+  to = "/index.html"
   status = 200
+
