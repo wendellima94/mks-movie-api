@@ -81,7 +81,9 @@ json
     "username" :"string",
     "password":"string",
 }
+```
 
+```
 Exemplo de Dados:
 json
 {
@@ -89,6 +91,7 @@ json
     "password":"abc123456"
 }
 ```
+
 ---
 ### Rotas Protegidas
 Exemplo de rota protegida que requer autenticação com JWT.
