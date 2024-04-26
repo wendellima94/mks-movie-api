@@ -10,9 +10,6 @@
       { "handle": "filesystem" },
       { "src": "/.*", "dest": "/app.js" }
     ],
-    "env": {
-      "EXAMPLE_ENV_VAR": "example-value"
-    },
     "install": {
       "include": ["package.json"],
       "ignoreScripts": false,
