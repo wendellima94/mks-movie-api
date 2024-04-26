@@ -1,21 +1,28 @@
 {
     "version": 2,
-	"builds": [
-        {
-            "src": "src/main.ts",
-            "use": "@vercel/node"
-        }
+    "builds": [
+      {
+        "src": "app.js",
+        "use": "@vercel/node"
+      }
     ],
     "routes": [
-        {
-            "src": "/(.*)",
-            "dest": "src/main.ts",
-            "methods": [
-                "GET",
-                "POST",
-                "PUT",
-                "DELETE"
-            ]
-        }
-    ]
-}
+      { "handle": "filesystem" },
+      { "src": "/.*", "dest": "/app.js" }
+    ],
+    "env": {
+      "EXAMPLE_ENV_VAR": "example-value"
+    },
+    "install": {
+      "include": ["package.json"],
+      "ignoreScripts": false,
+      "dest": "/vercel/functions",
+      "cmd": "npm install --force"
+    },
+    "functions": {
+      "app": {
+        "runtime": "@vercel/node"
+      }
+    }
+  }
+  
