@@ -3,15 +3,7 @@
   publish = "dist"
   functions = "dist/netlify/functions"
 
-<<<<<<< HEAD
   [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-=======
-[[redirects]]
-  from = "/*"
-  to = "/.netlify/functions/main"
-  status = 200
->>>>>>> 2adda147709b573f9c4f9793ed370849c426ac35
