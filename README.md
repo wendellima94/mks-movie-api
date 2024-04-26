@@ -138,6 +138,7 @@ Descrição: Atualiza os detalhes de um filme existente.
 URL: /movies/:id
 Método: PATCH
 Parâmetros de Rota:
+
 ```id:"string"```
 
 Exemplo de Dados:
@@ -154,6 +155,7 @@ json
     "poster_path": "string",
     "contentType": "string"
 }
+```
 
 ```
   Exemplo de edição: 
@@ -168,7 +170,6 @@ json
     "poster_path": "/caminho/do/poster.jpg",
     "contentType": "Movie",
 }
-
 ```
 
 ---
@@ -178,9 +179,11 @@ Descrição: Exclui um filme do sistema.
 URL: /movies/:id
 Método: DELETE
 Parâmetros de Rota:
+
 ```
  id:"string"
 ```
+
 ---
 ## Fique à vontade para explorar e testar as rotas usando o Swagger.
 ---
