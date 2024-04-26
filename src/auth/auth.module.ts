@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { ConfigModule, ConfigService } from '@nestjs/config'; // Importe o ConfigModule e ConfigService
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { AuthService } from './auth.service';
 import { UsersService } from '../users/users.service';
 import { User } from '../users/entities/user.entity';
@@ -14,9 +14,9 @@ import { CacheRedisModule } from 'src/redis/redis-cache.module';
 @Module({
   imports: [
     PassportModule.register({ defaultStrategy: 'jwt' }),
-    ConfigModule.forRoot(), // Importe o ConfigModule aqui
+    ConfigModule.forRoot(), 
     JwtModule.registerAsync({
-      imports: [ConfigModule], // Importe o ConfigModule aqui também
+      imports: [ConfigModule], 
       useFactory: async (configService: ConfigService) => ({
         secret: configService.get<string>('JWT_SECRET'),
         signOptions: { expiresIn: configService.get<string>('JWT_EXPIRES_IN') },
