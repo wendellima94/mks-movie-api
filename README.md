@@ -118,6 +118,20 @@ json
     "contentType": "string"
   }
   ```
+```
+Exemplo de novo filme:
+{
+    "title": "Filme de Exemplo",
+    "director": "Diretor Exemplo",
+    "description": "Descrição do Filme",
+    "first_aired": "2022-01-01",
+    "genres": ["Ação", "Aventura"],
+    "original_title": "Original Title",
+    "overview": "Visão geral do filme",
+    "poster_path": "/caminho/do/poster.jpg",
+    "contentType": "Movie"
+}
+```
 ---
 ### Atualizar Filme (PATCH)
 Descrição: Atualiza os detalhes de um filme existente.
@@ -139,20 +153,21 @@ json
     "overview": "string",
     "poster_path": "string",
     "contentType": "string"
-  }
-  Exemplo do 
-  {
-     "title": "Filme de Exemplo",
-     "director": "Diretor Exemplo",
-     "description": "Descrição do Filme",
-     "first_aired": "2022-01-01",
-      "genres": ["Ação", "Aventura"],
-     "original_title": "Original Title",
-     "overview": "Visão geral do filme",
-     "poster_path": "/caminho/do/poster.jpg",
-     "contentType": "Movie"
 }
 
+```
+  Exemplo de edição: 
+{
+    "title": "Filme de Exemplo",
+    "director": "Diretor Exemplo",
+    "description": "Descrição do Filme",
+    "first_aired": "2022-01-01",
+    "genres": ["Ação", "Aventura"],
+    "original_title": "Original Title",
+    "overview": "Visão geral do filme",
+    "poster_path": "/caminho/do/poster.jpg",
+    "contentType": "Movie"
+}
 ```
 ---
 
